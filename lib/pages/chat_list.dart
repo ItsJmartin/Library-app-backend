@@ -7,6 +7,7 @@ class ChatListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xfff86320),
       body: SafeArea(
           child: Container(
         color: Color(0xffffffff),

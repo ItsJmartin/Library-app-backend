@@ -9,7 +9,7 @@ class ContactChat extends StatelessWidget {
     return Scaffold(
       body: SafeArea(child: Center(
         child: Center(
-          child: Text("Contact Chat",
+          child: Text("Chat Room",
           style: GoogleFonts.dmSans(
             color: Color(0xfff86320),
           ),

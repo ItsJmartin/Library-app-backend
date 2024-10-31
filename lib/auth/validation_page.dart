@@ -1,4 +1,4 @@
-import 'package:chat_app/pages/chat_list.dart';
+import 'package:chat_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,39 +26,38 @@ class _ValidationPageState extends State<ValidationPage> {
     return Scaffold(
       backgroundColor: const Color(0xfff86320),
       body: SafeArea(
-        child: SizedBox(
-          width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const SizedBox(
-                width: 70,
-                height: 70,
-                child: Image(
-                  image: AssetImage("assets/chat.png"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const SizedBox(
+              width: 70,
+              height: 70,
+              child: Image(
+                image: AssetImage("assets/icons/chat.png"),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.all(16.1),
+              child: Text(
+                "Login",
+                style: GoogleFonts.spaceGrotesk(
+                  color: const Color(0xffffffff),
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.all(16.1),
-                child: Text(
-                  "Login",
-                  style: GoogleFonts.spaceGrotesk(
-                    color: const Color(0xffffffff),
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16.1),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: <Widget>[
-                      TextFormField(
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.1),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
                         keyboardType: TextInputType.emailAddress,
-                        style: GoogleFonts.nunito(color: const Color(0xffffffff)),
+                        style:
+                            GoogleFonts.dmSans(color: const Color(0xffffffff)),
                         controller: _emailController,
                         validator: (email) {
                           if (email == null || email.isEmpty) {
@@ -73,15 +72,17 @@ class _ValidationPageState extends State<ValidationPage> {
                         },
                         decoration: InputDecoration(
                           labelText: "Email",
-                          labelStyle:
-                              GoogleFonts.nunito(color: const Color(0xffffffff)),
+                          labelStyle: GoogleFonts.dmSans(
+                              color: const Color(0xffffffff)),
+                          prefixIcon: const Icon(
+                            Icons.lock,
+                            color: Color(0xffffffff),
+                          ),
+                          // text field
                           enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                           ),
-                          prefixIcon: const Icon(
-                            Icons.email,
-                            color: Color(0xffffffff),
-                          ),
+                          // focused text field
                           focusedBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide(
@@ -89,12 +90,30 @@ class _ValidationPageState extends State<ValidationPage> {
                               width: 2,
                             ),
                           ),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      TextFormField(
+
+                          // error text field
+                          errorBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                            borderSide: BorderSide(
+                              color: Color(0xffdf0808),
+                              width: 2,
+                            ),
+                          ),
+                          // error focused text filed
+                          focusedErrorBorder: const OutlineInputBorder(
+                            
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                            borderSide: BorderSide(
+                              color: Color(0xffffffff),
+                              width: 2,
+                            ),
+                          ),
+                        )),
+                    const SizedBox(height: 20),
+                    TextFormField(
                         keyboardType: TextInputType.visiblePassword,
-                        style: GoogleFonts.nunito(color: const Color(0xffffffff)),
+                        style:
+                            GoogleFonts.dmSans(color: const Color(0xffffffff)),
                         controller: _passwordController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -107,15 +126,17 @@ class _ValidationPageState extends State<ValidationPage> {
                         obscureText: true,
                         decoration: InputDecoration(
                           labelText: "Password",
-                          labelStyle:
-                              GoogleFonts.nunito(color: const Color(0xffffffff)),
-                          enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                          ),
+                          labelStyle: GoogleFonts.dmSans(
+                              color: const Color(0xffffffff)),
                           prefixIcon: const Icon(
                             Icons.lock,
                             color: Color(0xffffffff),
                           ),
+                          // text field
+                          enabledBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          // focused text field
                           focusedBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide(
@@ -123,73 +144,87 @@ class _ValidationPageState extends State<ValidationPage> {
                               width: 2,
                             ),
                           ),
-                        ),
-                      ),
-                      const SizedBox(height: 40),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 60,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              _emailController.clear();
-                              _passwordController.clear();
-          
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const ChatListPage(),
-                                ),
-                              );
-          
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Login Successful'),
-                                  backgroundColor:
-                                      Color(0xff4caf50), // Optional customization
-                                  duration: Duration(seconds: 3),
-                                ),
-                              );
-                            }
-                          },
-                          child: Text(
-                            "Login",
-                            style: GoogleFonts.nunito(
-                              color: const Color(0xff000000),
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
+
+                          // error text field
+                          errorBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                            borderSide: BorderSide(
+                              color: Color(0xffdf0808),
+                              width: 2,
                             ),
+                          ),
+                          // error focused text filed
+                          focusedErrorBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                            borderSide: BorderSide(
+                              color: Color(0xffffffff),
+                              width: 2,
+                            ),
+                          ),
+                        )),
+                    const SizedBox(height: 40),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 60,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            _emailController.clear();
+                            _passwordController.clear();
+
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const HomePage(),
+                              ),
+                            );
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Login Successful'),
+                                backgroundColor: Color(0xff4caf50),
+                                duration: Duration(seconds: 3),
+                              ),
+                            );
+                          }
+                        },
+                        child: Text(
+                          "Login",
+                          style: GoogleFonts.dmSans(
+                            color: const Color(0xff000000),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            'Not a Member?',
-                            style: GoogleFonts.nunito(
-                              color: const Color(0xffffffff),
-                              fontSize: 16,
-                            ),
+                    ),
+                    const SizedBox(height: 10), // gap betwwen contents
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Not a Member?',
+                          style: GoogleFonts.dmSans(
+                            color: const Color(0xffffffff),
+                            fontSize: 16,
                           ),
-                          const SizedBox(width: 5),
-                          Text(
-                            'Register now',
-                            style: GoogleFonts.nunito(
-                              color: const Color(0xffffffff),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
+                        ),
+                        const SizedBox(width: 5),
+                        Text(
+                          'Register now',
+                          style: GoogleFonts.dmSans(
+                            color: const Color(0xffffffff),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
