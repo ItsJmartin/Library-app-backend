@@ -1,15 +1,16 @@
+import 'package:chat_app/auth/register_page.dart';
 import 'package:chat_app/pages/chat_list.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ValidationPage extends StatefulWidget {
-  const ValidationPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<ValidationPage> createState() => _ValidationPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _ValidationPageState extends State<ValidationPage> {
+class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -74,8 +75,7 @@ class _ValidationPageState extends State<ValidationPage> {
                       },
                       decoration: InputDecoration(
                         labelText: "Email",
-                        labelStyle:
-                            GoogleFonts.dmSans(color: Colors.black),
+                        labelStyle: GoogleFonts.dmSans(color: Colors.black),
                         prefixIcon: const Icon(
                           Icons.lock,
                           color: Color(0xfff86320),
@@ -127,8 +127,7 @@ class _ValidationPageState extends State<ValidationPage> {
                       obscureText: true,
                       decoration: InputDecoration(
                         labelText: "Password",
-                        labelStyle:
-                            GoogleFonts.dmSans(color: Colors.black),
+                        labelStyle: GoogleFonts.dmSans(color: Colors.black),
                         prefixIcon: const Icon(
                           Icons.email,
                           color: Color(0xfff86320),
@@ -146,7 +145,7 @@ class _ValidationPageState extends State<ValidationPage> {
                             width: 2,
                           ),
                         ),
-        
+
                         // error text field
                         errorBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(30)),
@@ -171,20 +170,18 @@ class _ValidationPageState extends State<ValidationPage> {
                       height: 60,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xfff86320)
-                        ),
+                            backgroundColor: Color(0xfff86320)),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             _emailController.clear();
                             _passwordController.clear();
-        
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => const ChatListPage(),
                               ),
                             );
-        
+
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text('Login Successful'),
@@ -216,12 +213,22 @@ class _ValidationPageState extends State<ValidationPage> {
                           ),
                         ),
                         const SizedBox(width: 5),
-                        Text(
-                          'Register now',
-                          style: GoogleFonts.dmSans(
-                            color: const Color(0xfff86320),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RegisterPage(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'Register now',
+                            style: GoogleFonts.dmSans(
+                              color: const Color(0xfff86320),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
                           ),
                         ),
                       ],

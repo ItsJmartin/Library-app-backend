@@ -1,4 +1,4 @@
-import 'package:chat_app/auth/validation_page.dart';
+import 'package:chat_app/auth/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -131,7 +131,7 @@ class HomePage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ValidationPage(),
+                            builder: (context) => const LoginPage(),
                           ),
                         );
                       },
