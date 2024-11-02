@@ -1,4 +1,4 @@
-import 'package:chat_app/pages/home_page.dart';
+import 'package:chat_app/pages/chat_list.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -24,16 +24,19 @@ class _ValidationPageState extends State<ValidationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xfff86320),
+      resizeToAvoidBottomInset: true,
+      backgroundColor: const Color(0xffffffff),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             const SizedBox(
-              width: 70,
-              height: 70,
+              width: 100,
+              height: 100,
               child: Image(
-                image: AssetImage("assets/icons/chat.png"),
+                image: AssetImage("assets/icons/login1.png"),
+                color: Color(0xfff86320),
               ),
             ),
             const SizedBox(height: 10),
@@ -42,7 +45,7 @@ class _ValidationPageState extends State<ValidationPage> {
               child: Text(
                 "Login",
                 style: GoogleFonts.spaceGrotesk(
-                  color: const Color(0xffffffff),
+                  color: const Color(0xfff86320),
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
                 ),
@@ -55,130 +58,133 @@ class _ValidationPageState extends State<ValidationPage> {
                 child: Column(
                   children: <Widget>[
                     TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        style:
-                            GoogleFonts.dmSans(color: const Color(0xffffffff)),
-                        controller: _emailController,
-                        validator: (email) {
-                          if (email == null || email.isEmpty) {
-                            return 'Please enter an email';
-                          }
-                          final emailRegex =
-                              RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-                          if (!emailRegex.hasMatch(email)) {
-                            return 'Please enter a valid email';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          labelText: "Email",
-                          labelStyle: GoogleFonts.dmSans(
-                              color: const Color(0xffffffff)),
-                          prefixIcon: const Icon(
-                            Icons.lock,
-                            color: Color(0xffffffff),
+                      keyboardType: TextInputType.emailAddress,
+                      style: GoogleFonts.dmSans(color: Colors.grey),
+                      controller: _emailController,
+                      validator: (email) {
+                        if (email == null || email.isEmpty) {
+                          return 'Please enter an email';
+                        }
+                        final emailRegex =
+                            RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+                        if (!emailRegex.hasMatch(email)) {
+                          return 'Please enter a valid email';
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        labelText: "Email",
+                        labelStyle:
+                            GoogleFonts.dmSans(color: Colors.black),
+                        prefixIcon: const Icon(
+                          Icons.lock,
+                          color: Color(0xfff86320),
+                        ),
+                        // text field
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xfff86320)),
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                        ),
+                        // focused text field
+                        focusedBorder: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                          borderSide: BorderSide(
+                            color: Color(0xfff86320),
+                            width: 2,
                           ),
-                          // text field
-                          enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                        ),
+                        // error text field
+                        errorBorder: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                          borderSide: BorderSide(
+                            color: Color(0xffdf0808),
+                            width: 2,
                           ),
-                          // focused text field
-                          focusedBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            borderSide: BorderSide(
-                              color: Color(0xffffffff),
-                              width: 2,
-                            ),
+                        ),
+                        // error focused text filed
+                        focusedErrorBorder: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                          borderSide: BorderSide(
+                            color: Color(0xfff86320),
+                            width: 2,
                           ),
-
-                          // error text field
-                          errorBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            borderSide: BorderSide(
-                              color: Color(0xffdf0808),
-                              width: 2,
-                            ),
-                          ),
-                          // error focused text filed
-                          focusedErrorBorder: const OutlineInputBorder(
-                            
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            borderSide: BorderSide(
-                              color: Color(0xffffffff),
-                              width: 2,
-                            ),
-                          ),
-                        )),
+                        ),
+                      ),
+                    ),
                     const SizedBox(height: 20),
                     TextFormField(
-                        keyboardType: TextInputType.visiblePassword,
-                        style:
-                            GoogleFonts.dmSans(color: const Color(0xffffffff)),
-                        controller: _passwordController,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Please enter a password";
-                          } else if (value.length < 6) {
-                            return "Password must be at least 6 characters";
-                          }
-                          return null;
-                        },
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          labelText: "Password",
-                          labelStyle: GoogleFonts.dmSans(
-                              color: const Color(0xffffffff)),
-                          prefixIcon: const Icon(
-                            Icons.lock,
-                            color: Color(0xffffffff),
+                      keyboardType: TextInputType.visiblePassword,
+                      style: GoogleFonts.dmSans(color: Colors.grey),
+                      controller: _passwordController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Please enter a password";
+                        } else if (value.length < 6) {
+                          return "Password must be at least 6 characters";
+                        }
+                        return null;
+                      },
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        labelText: "Password",
+                        labelStyle:
+                            GoogleFonts.dmSans(color: Colors.black),
+                        prefixIcon: const Icon(
+                          Icons.email,
+                          color: Color(0xfff86320),
+                        ),
+                        // text field
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xfff86320)),
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                        ),
+                        // focused text field
+                        focusedBorder: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                          borderSide: BorderSide(
+                            color: Color(0xfff86320),
+                            width: 2,
                           ),
-                          // text field
-                          enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                        ),
+        
+                        // error text field
+                        errorBorder: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                          borderSide: BorderSide(
+                            color: Color(0xffdf0808),
+                            width: 2,
                           ),
-                          // focused text field
-                          focusedBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            borderSide: BorderSide(
-                              color: Color(0xffffffff),
-                              width: 2,
-                            ),
+                        ),
+                        // error focused text filed
+                        focusedErrorBorder: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                          borderSide: BorderSide(
+                            color: Color(0xfff86320),
+                            width: 2,
                           ),
-
-                          // error text field
-                          errorBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            borderSide: BorderSide(
-                              color: Color(0xffdf0808),
-                              width: 2,
-                            ),
-                          ),
-                          // error focused text filed
-                          focusedErrorBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            borderSide: BorderSide(
-                              color: Color(0xffffffff),
-                              width: 2,
-                            ),
-                          ),
-                        )),
+                        ),
+                      ),
+                    ),
                     const SizedBox(height: 40),
                     SizedBox(
                       width: double.infinity,
                       height: 60,
                       child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xfff86320)
+                        ),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             _emailController.clear();
                             _passwordController.clear();
-
+        
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const HomePage(),
+                                builder: (context) => const ChatListPage(),
                               ),
                             );
-
+        
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text('Login Successful'),
@@ -191,7 +197,7 @@ class _ValidationPageState extends State<ValidationPage> {
                         child: Text(
                           "Login",
                           style: GoogleFonts.dmSans(
-                            color: const Color(0xff000000),
+                            color: const Color(0xffffffff),
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
@@ -205,7 +211,7 @@ class _ValidationPageState extends State<ValidationPage> {
                         Text(
                           'Not a Member?',
                           style: GoogleFonts.dmSans(
-                            color: const Color(0xffffffff),
+                            color: const Color(0xfff86320),
                             fontSize: 16,
                           ),
                         ),
@@ -213,7 +219,7 @@ class _ValidationPageState extends State<ValidationPage> {
                         Text(
                           'Register now',
                           style: GoogleFonts.dmSans(
-                            color: const Color(0xffffffff),
+                            color: const Color(0xfff86320),
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                           ),
