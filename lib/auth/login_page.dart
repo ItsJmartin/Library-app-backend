@@ -28,36 +28,36 @@ class _LoginPageState extends State<LoginPage> {
       resizeToAvoidBottomInset: true,
       backgroundColor: const Color(0xffffffff),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            const SizedBox(
-              width: 100,
-              height: 100,
-              child: Image(
-                image: AssetImage("assets/icons/login1.png"),
-                color: Color(0xfff86320),
-              ),
-            ),
-            const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.all(16.1),
-              child: Text(
-                "Login",
-                style: GoogleFonts.spaceGrotesk(
-                  color: const Color(0xfff86320),
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.1),
-              child: Form(
-                key: _formKey,
-                child: Column(
+        child: Center(
+          child: Form(
+            key: _formKey,
+            child: Padding(
+              padding: EdgeInsets.all(16.1),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
+                    const SizedBox(
+                      width: 100,
+                      height: 100,
+                      child: Image(
+                        image: AssetImage("assets/icons/login1.png"),
+                        color: Color(0xfff86320),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Padding(
+                      padding: const EdgeInsets.all(16.1),
+                      child: Text(
+                        "Login",
+                        style: GoogleFonts.spaceGrotesk(
+                          color: const Color(0xfff86320),
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+              
                     TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       style: GoogleFonts.dmSans(color: Colors.grey),
@@ -145,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                             width: 2,
                           ),
                         ),
-
+              
                         // error text field
                         errorBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(30)),
@@ -181,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                                 builder: (context) => const ChatListPage(),
                               ),
                             );
-
+              
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text('Login Successful'),
@@ -201,43 +201,43 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10), // gap betwwen contents
+                    // const SizedBox(height: 05), // gap betwwen contents
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'Not a Member?',
-                          style: GoogleFonts.dmSans(
-                            color: const Color(0xfff86320),
-                            fontSize: 16,
-                          ),
-                        ),
-                        const SizedBox(width: 5),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => RegisterPage(),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            'Register now',
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'Not a Member?',
                             style: GoogleFonts.dmSans(
                               color: const Color(0xfff86320),
-                              fontWeight: FontWeight.bold,
                               fontSize: 16,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+                          const SizedBox(width: 5),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.all(0),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => RegisterPage(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              'Register now',
+                              style: GoogleFonts.dmSans(
+                                color: const Color(0xfff86320),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ]),
+                  ]),
             ),
-          ],
+          ),
         ),
       ),
     );
