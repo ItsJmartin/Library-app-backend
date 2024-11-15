@@ -1,10 +1,12 @@
 import 'package:chat_app/auth/register_page.dart';
-import 'package:chat_app/pages/chat_list.dart';
+import 'package:chat_app/pages/contacts_list.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({
+    super.key,
+  });
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -92,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.all(Radius.circular(30)),
                           borderSide: BorderSide(
                             color: Color(0xfff86320),
-                            width: 2,
+                            width: 1,
                           ),
                         ),
                         // error text field
@@ -100,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.all(Radius.circular(30)),
                           borderSide: BorderSide(
                             color: Color(0xffdf0808),
-                            width: 2,
+                            width: 1,
                           ),
                         ),
                         // error focused text filed
@@ -108,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.all(Radius.circular(30)),
                           borderSide: BorderSide(
                             color: Color(0xfff86320),
-                            width: 2,
+                            width: 1,
                           ),
                         ),
                       ),
@@ -144,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.all(Radius.circular(30)),
                           borderSide: BorderSide(
                             color: Color(0xfff86320),
-                            width: 2,
+                            width: 1,
                           ),
                         ),
 
@@ -153,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.all(Radius.circular(30)),
                           borderSide: BorderSide(
                             color: Color(0xffdf0808),
-                            width: 2,
+                            width: 1,
                           ),
                         ),
                         // error focused text filed
@@ -161,7 +163,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.all(Radius.circular(30)),
                           borderSide: BorderSide(
                             color: Color(0xfff86320),
-                            width: 2,
+                            width: 1,
                           ),
                         ),
                       ),
@@ -180,7 +182,7 @@ class _LoginPageState extends State<LoginPage> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const ChatListPage(),
+                                builder: (context) => const ContactsList(),
                               ),
                             );
 

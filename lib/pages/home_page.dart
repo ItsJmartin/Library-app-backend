@@ -1,5 +1,5 @@
 import 'package:chat_app/auth/login_page.dart';
-import 'package:chat_app/pages/chat_list.dart';
+import 'package:chat_app/auth/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -104,10 +104,9 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.pushAndRemoveUntil(
+                    Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ChatListPage()),
-                      (Route<dynamic> route) => false,
+                      MaterialPageRoute(builder: (context) => RegisterPage()),
                     );
                   },
                   child: Text(

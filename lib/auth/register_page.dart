@@ -1,17 +1,15 @@
 import 'package:chat_app/auth/login_page.dart';
+import 'package:chat_app/pages/contacts_list.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+  const RegisterPage({
+    super.key,
+  });
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
-  // void dispose(){
-  //   usernammeController.dispose();
-  //   emailController.dispose();
-  //   passwordController.dispose();
-  // }
 }
 
 class _RegisterPageState extends State<RegisterPage> {
@@ -91,7 +89,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide(
                               color: Color(0xfff86320),
-                              width: 2,
+                              width: 1,
                             ),
                           ),
                           // error text field
@@ -99,7 +97,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide(
                               color: Color(0xffdf0808),
-                              width: 2,
+                              width: 1,
                             ),
                           ),
                           // error focused text filed
@@ -107,7 +105,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide(
                               color: Color(0xfff86320),
-                              width: 2,
+                              width: 1,
                             ),
                           ),
                         ),
@@ -145,7 +143,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide(
                               color: Color(0xfff86320),
-                              width: 2,
+                              width: 1,
                             ),
                           ),
                           // error text field
@@ -153,7 +151,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide(
                               color: Color(0xffdf0808),
-                              width: 2,
+                              width: 1,
                             ),
                           ),
                           // error focused text filed
@@ -161,7 +159,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide(
                               color: Color(0xfff86320),
-                              width: 2,
+                              width: 1,
                             ),
                           ),
                         ),
@@ -199,7 +197,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide(
                               color: Color(0xfff86320),
-                              width: 2,
+                              width: 1,
                             ),
                           ),
 
@@ -208,7 +206,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide(
                               color: Color(0xffdf0808),
-                              width: 2,
+                              width: 1,
                             ),
                           ),
                           // error focused text filed
@@ -216,35 +214,12 @@ class _RegisterPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide(
                               color: Color(0xfff86320),
-                              width: 2,
+                              width: 1,
                             ),
                           ),
                         ),
                       ),
                       const SizedBox(height: 30),
-
-                      // check box
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Checkbox(
-                              activeColor: Color(0xff27af3a),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              value: isCheked,
-                              onChanged: (newValue) {
-                                setState(() {
-                                  isCheked = newValue!;
-                                });
-                              },
-                            ),
-                            Text(
-                              "I agree to the Terms and Conditions",
-                              style: GoogleFonts.dmSans(
-                                  fontSize: 15, color: Color(0xff1D44D6)),
-                            ),
-                          ]),
 
                       SizedBox(
                         width: double.infinity,
@@ -260,12 +235,12 @@ class _RegisterPageState extends State<RegisterPage> {
                               _emailController.clear();
                               _passwordController.clear();
 
-                              // Navigator.pushReplacement(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => const ChatListPage(),
-                              //   ),
-                              // );
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const ContactsList(),
+                                ),
+                              );
 
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
@@ -287,49 +262,49 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
 
-                      // SizedBox(height: 10), // gap betwwen contents
+                      SizedBox(height: 10), // gap betwwen contents
 
-                      // Row(
-                      //     mainAxisAlignment: MainAxisAlignment.center,
-                      //     children: <Widget>[
-                      //       Text(
-                      //         'Already Member?',
-                      //         style: GoogleFonts.dmSans(
-                      //           color: const Color(0xfff86320),
-                      //           fontSize: 16,
-                      //         ),
-                      //       ),
-                      //       TextButton(
-                      //         style: TextButton.styleFrom(
-                      //           padding: EdgeInsets.all(0),
-                      //         ),
-                      //         onPressed: () {
-                      //           Navigator.pop(context, (route) => LoginPage());
-                      //         },
-                      //         child: Text(
-                      //           'Login',
-                      //           style: GoogleFonts.dmSans(
-                      //             color: const Color(0xfff86320),
-                      //             fontWeight: FontWeight.bold,
-                      //             fontSize: 16,
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ]),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              'Already Member?',
+                              style: GoogleFonts.dmSans(
+                                color: const Color(0xfff86320),
+                                fontSize: 16,
+                              ),
+                            ),
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.all(0),
+                              ),
+                              onPressed: () {
+                                Navigator.pop(context, (route) => LoginPage());
+                              },
+                              child: Text(
+                                'Login',
+                                style: GoogleFonts.dmSans(
+                                  color: const Color(0xfff86320),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ]),
 
                       SizedBox(height: 30), //gap between contents
 
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context, (route) => LoginPage());
-                        },
-                        style: ElevatedButton.styleFrom(
-                            iconColor: Color(0xfff86320),
-                            backgroundColor: Color(0xffffffff),
-                            elevation: 15,
-                            shadowColor: Color(0xfff86320)),
-                        child: Icon(Icons.arrow_back_ios_new),
-                      )
+                      // ElevatedButton(
+                      //   onPressed: () {
+                      //     // Navigator.pop(context, (route) => LoginPage());
+                      //   },
+                      //   style: ElevatedButton.styleFrom(
+                      //       iconColor: Color(0xfff86320),
+                      //       backgroundColor: Color(0xffffffff),
+                      //       elevation: 15,
+                      //       shadowColor: Color(0xfff86320)),
+                      //   child: Icon(Icons.arrow_back_ios_new),
+                      // )
                     ]),
               ),
             ),
