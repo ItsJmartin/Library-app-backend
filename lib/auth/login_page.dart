@@ -11,7 +11,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _formKey = GlobalKey<FormState>();
+  final _loginKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -29,10 +29,11 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: const Color(0xffffffff),
       body: SafeArea(
         child: Center(
-          child: Form(
-            key: _formKey,
-            child: Padding(
-              padding: EdgeInsets.all(16.1),
+          child: Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(16.1),
+            child: Form(
+              key: _loginKey,
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -45,19 +46,20 @@ class _LoginPageState extends State<LoginPage> {
                         color: Color(0xfff86320),
                       ),
                     ),
-                    const SizedBox(height: 10),
-                    Padding(
-                      padding: const EdgeInsets.all(16.1),
-                      child: Text(
-                        "Login",
-                        style: GoogleFonts.spaceGrotesk(
-                          color: const Color(0xfff86320),
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
-                        ),
+
+                    const SizedBox(height: 20),
+
+                    Text(
+                      "Login",
+                      style: GoogleFonts.spaceGrotesk(
+                        color: const Color(0xfff86320),
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-              
+
+                    SizedBox(height: 40),
+
                     TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       style: GoogleFonts.dmSans(color: Colors.grey),
@@ -145,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                             width: 2,
                           ),
                         ),
-              
+
                         // error text field
                         errorBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(30)),
@@ -172,7 +174,7 @@ class _LoginPageState extends State<LoginPage> {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xfff86320)),
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {
+                          if (_loginKey.currentState!.validate()) {
                             _emailController.clear();
                             _passwordController.clear();
                             Navigator.pushReplacement(
@@ -181,7 +183,7 @@ class _LoginPageState extends State<LoginPage> {
                                 builder: (context) => const ChatListPage(),
                               ),
                             );
-              
+
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text('Login Successful'),

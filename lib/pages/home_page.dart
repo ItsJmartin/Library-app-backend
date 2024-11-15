@@ -10,151 +10,149 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: SizedBox(
-            width: double.infinity,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                // Skip button
-                Align(
-                  alignment: Alignment.topRight,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xfffbede7),
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                    ),
-                    onPressed: () {},
-                    child: Text(
-                      "Skip",
-                      style: GoogleFonts.dmSans(color: Color(0xfff86320)),
-                    ),
+        child: Container(
+          padding: EdgeInsets.all(16.1),
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              // Skip button
+              Align(
+                alignment: Alignment.topRight,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xfffbede7),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    "Skip",
+                    style: GoogleFonts.dmSans(color: Color(0xfff86320)),
                   ),
                 ),
-
-                SizedBox(height: 30),
-
-                Center(
-                  child: Container(
-                    height: 200,
-                    width: 200,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      image: DecorationImage(
-                        image: AssetImage("assets/icons/chat.png"),
-                        fit: BoxFit.fitHeight,
+              ),
+        
+              SizedBox(height: 30),
+        
+              Center(
+                child: Container(
+                  height: 200,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    image: DecorationImage(
+                      image: AssetImage("assets/icons/chat.png"),
+                      fit: BoxFit.fitHeight,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xfff86320).withOpacity(0.2),
+                        blurRadius: 50,
+                        offset: Offset(0, 30),
                       ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0xfff86320).withOpacity(0.2),
-                          blurRadius: 50,
-                          offset: Offset(0, 30),
-                        ),
-                      ],
-                    ),
+                    ],
                   ),
                 ),
-
-                SizedBox(height: 100),
-
-                Text(
-                  "Welcome to Halodec",
+              ),
+        
+              SizedBox(height: 100),
+        
+              Text(
+                "Welcome to Halodec",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.dmSans(
+                  color: Color(0xff000000),
+                  fontSize: 45,
+                  height: 1,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+        
+              SizedBox(height: 20),
+        
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  "Halodec supports sending and receiving a variety of media texts, photos, videos, documents, and location, as well as voice calls.",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.dmSans(
-                    color: Color(0xff000000),
-                    fontSize: 45,
-                    height: 1,
-                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
+                    // fontSize: 16,
+                    height: 1.5,
                   ),
                 ),
-
-                SizedBox(height: 20),
-
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              ),
+        
+              SizedBox(height: 40),
+        
+              // Let's Get Started button with shadow
+              Container(
+                width: double.infinity,
+                height: 70,
+                decoration: BoxDecoration(boxShadow: [
+                  BoxShadow(
+                    color: Color(0xfff86320).withOpacity(0.2),
+                    blurRadius: 50,
+                    offset: Offset(0, 10),
+                  ),
+                ]),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xfff86320),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => ChatListPage()),
+                      (Route<dynamic> route) => false,
+                    );
+                  },
                   child: Text(
-                    "Halodec supports sending and receiving a variety of media texts, photos, videos, documents, and location, as well as voice calls.",
-                    textAlign: TextAlign.center,
+                    "Let's Get Started",
+                    style: GoogleFonts.dmSans(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+        
+              // Already have an account? Login
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Already have an account?",
                     style: GoogleFonts.dmSans(
                       color: Colors.grey,
-                      // fontSize: 16,
-                      height: 1.5,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
-                ),
-
-                SizedBox(height: 40),
-
-                // Let's Get Started button with shadow
-                Container(
-                  width: double.infinity,
-                  height: 70,
-                  decoration: BoxDecoration(boxShadow: [
-                    BoxShadow(
-                      color: Color(0xfff86320).withOpacity(0.2),
-                      blurRadius: 50,
-                      offset: Offset(0, 10),
-                    ),
-                  ]),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xfff86320),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
+                  TextButton(
+                    style: TextButton.styleFrom(padding: EdgeInsets.all(0)),
                     onPressed: () {
-                      Navigator.pushAndRemoveUntil(
+                      Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ChatListPage()),
-                        (Route<dynamic> route) => false,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginPage(),
+                        ),
                       );
                     },
                     child: Text(
-                      "Let's Get Started",
+                      "Login",
                       style: GoogleFonts.dmSans(
-                        color: Colors.white,
-                        fontSize: 18,
+                        color: Color(0xfff86320),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                ),
-
-                // Already have an account? Login
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Already have an account?",
-                      style: GoogleFonts.dmSans(
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    TextButton(
-                      style: TextButton.styleFrom(padding: EdgeInsets.all(0)),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LoginPage(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        "Login",
-                        style: GoogleFonts.dmSans(
-                          color: Color(0xfff86320),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

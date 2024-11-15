@@ -30,10 +30,11 @@ class _RegisterPageState extends State<RegisterPage> {
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            child: Form(
-              key: _registerKey,
-              child: Padding(
-                padding: EdgeInsets.all(16.1),
+            child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(16.1),
+              child: Form(
+                key: _registerKey,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -46,18 +47,19 @@ class _RegisterPageState extends State<RegisterPage> {
                           color: Color(0xfff86320),
                         ),
                       ),
-                      const SizedBox(height: 10),
-                      Padding(
-                        padding: const EdgeInsets.all(16.1),
-                        child: Text(
-                          "Register",
-                          style: GoogleFonts.spaceGrotesk(
-                            color: const Color(0xfff86320),
-                            fontSize: 35,
-                            fontWeight: FontWeight.bold,
-                          ),
+
+                      const SizedBox(height: 20), //gap between contents
+
+                      Text(
+                        "Register",
+                        style: GoogleFonts.spaceGrotesk(
+                          color: const Color(0xfff86320),
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
+
+                      SizedBox(height: 40), // gap between contents
 
                       TextFormField(
                         keyboardType: TextInputType.name,
@@ -166,8 +168,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       const SizedBox(height: 20),
                       TextFormField(
-                        keyboardType: TextInputType.visiblePassword,
-                        style: GoogleFonts.dmSans(color: Colors.grey),
+                        keyboardType: TextInputType.number,
+                        style: GoogleFonts.dmSans(
+                          color: Colors.grey,
+                        ),
                         controller: _passwordController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -247,7 +251,10 @@ class _RegisterPageState extends State<RegisterPage> {
                         height: 60,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xfff86320)),
+                            backgroundColor: Color(0xfff86320),
+                            elevation: 20,
+                            shadowColor: Color(0xfff86320),
+                          ),
                           onPressed: () {
                             if (_registerKey.currentState!.validate()) {
                               _emailController.clear();
@@ -282,33 +289,47 @@ class _RegisterPageState extends State<RegisterPage> {
 
                       // SizedBox(height: 10), // gap betwwen contents
 
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              'Already Member?',
-                              style: GoogleFonts.dmSans(
-                                color: const Color(0xfff86320),
-                                fontSize: 16,
-                              ),
-                            ),
-                            TextButton(
-                              style: TextButton.styleFrom(
-                                padding: EdgeInsets.all(0),
-                              ),
-                              onPressed: () {
-                                Navigator.pop(context, (route) => LoginPage());
-                              },
-                              child: Text(
-                                'Login',
-                                style: GoogleFonts.dmSans(
-                                  color: const Color(0xfff86320),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ]),
+                      // Row(
+                      //     mainAxisAlignment: MainAxisAlignment.center,
+                      //     children: <Widget>[
+                      //       Text(
+                      //         'Already Member?',
+                      //         style: GoogleFonts.dmSans(
+                      //           color: const Color(0xfff86320),
+                      //           fontSize: 16,
+                      //         ),
+                      //       ),
+                      //       TextButton(
+                      //         style: TextButton.styleFrom(
+                      //           padding: EdgeInsets.all(0),
+                      //         ),
+                      //         onPressed: () {
+                      //           Navigator.pop(context, (route) => LoginPage());
+                      //         },
+                      //         child: Text(
+                      //           'Login',
+                      //           style: GoogleFonts.dmSans(
+                      //             color: const Color(0xfff86320),
+                      //             fontWeight: FontWeight.bold,
+                      //             fontSize: 16,
+                      //           ),
+                      //         ),
+                      //       ),
+                      //     ]),
+
+                      SizedBox(height: 30), //gap between contents
+
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context, (route) => LoginPage());
+                        },
+                        style: ElevatedButton.styleFrom(
+                            iconColor: Color(0xfff86320),
+                            backgroundColor: Color(0xffffffff),
+                            elevation: 15,
+                            shadowColor: Color(0xfff86320)),
+                        child: Icon(Icons.arrow_back_ios_new),
+                      )
                     ]),
               ),
             ),
