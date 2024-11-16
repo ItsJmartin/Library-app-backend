@@ -27,10 +27,7 @@ class ContactsList extends StatelessWidget {
           const SizedBox(height: 20),
 
           // custom navigation bar
-          SizedBox(
-            height: 400,
-            child: const CustomNavBar(),
-          ),
+          const Expanded(child: CustomNavBar()),
         ]),
       ),
     ));

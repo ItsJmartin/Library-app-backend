@@ -23,8 +23,10 @@ class CustomNavBar extends StatelessWidget {
                 color: Color(0xfff86320),
                 borderRadius: BorderRadius.circular(10),
               ),
-      
+
               indicatorSize: TabBarIndicatorSize.tab, // full width of the tab
+              dividerColor:
+                  Colors.transparent, // divider between tabBar and tabBariew
               labelColor: Colors.white,
               unselectedLabelColor: Color(0xfff86320),
               tabs: const [
@@ -36,11 +38,11 @@ class CustomNavBar extends StatelessWidget {
           ),
         ),
         // const SizedBox(height: 20), // space between content
-        Expanded(
+        Flexible(
           child: TabBarView(
             children: [
-              Center(child: Text('Chat Page')),
               Center(child: Text('Status Page')),
+              Center(child: Text('Chat Page')),
               Center(child: Text('Calls Page')),
             ],
           ),
