@@ -1,5 +1,4 @@
-import 'package:chat_app/auth/login_page.dart';
-import 'package:chat_app/auth/register_page.dart';
+import 'package:chat_app/auth/login_or_register.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -83,7 +82,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
         
-              SizedBox(height: 40),
+              SizedBox(height: 30),
         
               // Let's Get Started button with shadow
               Container(
@@ -106,7 +105,7 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => RegisterPage()),
+                      MaterialPageRoute(builder: (context) => LoginOrRegister()),
                     );
                   },
                   child: Text(
@@ -134,12 +133,12 @@ class HomePage extends StatelessWidget {
                   TextButton(
                     style: TextButton.styleFrom(padding: EdgeInsets.all(0)),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginPage(),
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => const LoginOrRegister(),
+                      //   ),
+                      // );
                     },
                     child: Text(
                       "Login",

@@ -1,15 +1,20 @@
-import 'package:chat_app/auth/login_page.dart';
-import 'package:chat_app/pages/contacts_list.dart';
+import 'package:chat_app/components/mytextfield.dart';
+import 'package:chat_app/pages/login_page.dart';
+import 'package:chat_app/pages/contacts_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({
+    required this.onTap,
     super.key,
   });
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
+
+  // tap to go to register page
+  final void Function()? onTap;
 }
 
 class _RegisterPageState extends State<RegisterPage> {
@@ -17,6 +22,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPassController = TextEditingController();
 
   bool isCheked = false;
 
@@ -47,7 +53,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
 
                       const SizedBox(height: 20), //gap between contents
-
+                      // heading
                       Text(
                         "Register",
                         style: GoogleFonts.spaceGrotesk(
@@ -59,10 +65,12 @@ class _RegisterPageState extends State<RegisterPage> {
 
                       SizedBox(height: 40), // gap between contents
 
-                      TextFormField(
-                        keyboardType: TextInputType.name,
-                        style: GoogleFonts.dmSans(color: Colors.grey),
+                      // username textfield
+                      MyTextfield(
+                        hintText: "User name",
+                        obscureText: false,
                         controller: _usernameController,
+                        keyboardType: TextInputType.text,
                         validator: (userName) {
                           if (userName == null || userName.isEmpty) {
                             return "Please enter user name";
@@ -72,49 +80,16 @@ class _RegisterPageState extends State<RegisterPage> {
                           }
                           return null;
                         },
-                        decoration: InputDecoration(
-                          labelText: "User Name",
-                          labelStyle: GoogleFonts.dmSans(color: Colors.black),
-                          prefixIcon: const Icon(
-                            Icons.person,
-                            color: Color(0xfff86320),
-                          ),
-                          // text field
-                          enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xfff86320)),
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                          ),
-                          // focused text field
-                          focusedBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            borderSide: BorderSide(
-                              color: Color(0xfff86320),
-                              width: 1,
-                            ),
-                          ),
-                          // error text field
-                          errorBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            borderSide: BorderSide(
-                              color: Color(0xffdf0808),
-                              width: 1,
-                            ),
-                          ),
-                          // error focused text filed
-                          focusedErrorBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            borderSide: BorderSide(
-                              color: Color(0xfff86320),
-                              width: 1,
-                            ),
-                          ),
-                        ),
                       ),
+
                       const SizedBox(height: 20), //gap between contents
-                      TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        style: GoogleFonts.dmSans(color: Colors.grey),
+
+                      // email textfield
+                      MyTextfield(
+                        hintText: "Email",
+                        obscureText: false,
                         controller: _emailController,
+                        keyboardType: TextInputType.emailAddress,
                         validator: (email) {
                           if (email == null || email.isEmpty) {
                             return 'Please enter an email';
@@ -126,98 +101,43 @@ class _RegisterPageState extends State<RegisterPage> {
                           }
                           return null;
                         },
-                        decoration: InputDecoration(
-                          labelText: "Email",
-                          labelStyle: GoogleFonts.dmSans(color: Colors.black),
-                          prefixIcon: const Icon(
-                            Icons.lock,
-                            color: Color(0xfff86320),
-                          ),
-                          // text field
-                          enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xfff86320)),
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                          ),
-                          // focused text field
-                          focusedBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            borderSide: BorderSide(
-                              color: Color(0xfff86320),
-                              width: 1,
-                            ),
-                          ),
-                          // error text field
-                          errorBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            borderSide: BorderSide(
-                              color: Color(0xffdf0808),
-                              width: 1,
-                            ),
-                          ),
-                          // error focused text filed
-                          focusedErrorBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            borderSide: BorderSide(
-                              color: Color(0xfff86320),
-                              width: 1,
-                            ),
-                          ),
-                        ),
                       ),
+
                       const SizedBox(height: 20),
-                      TextFormField(
-                        keyboardType: TextInputType.number,
-                        style: GoogleFonts.dmSans(
-                          color: Colors.grey,
-                        ),
+
+                      // password textField
+                      MyTextfield(
+                        hintText: "Password",
+                        obscureText: true,
                         controller: _passwordController,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
+                        keyboardType: TextInputType.number,
+                        validator: (password) {
+                          if (password == null || password.isEmpty) {
                             return "Please enter a password";
-                          } else if (value.length < 6) {
+                          } else if (password.length < 6) {
                             return "Password must be at least 6 characters";
                           }
                           return null;
                         },
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          labelText: "Password",
-                          labelStyle: GoogleFonts.dmSans(color: Colors.black),
-                          prefixIcon: const Icon(
-                            Icons.email,
-                            color: Color(0xfff86320),
-                          ),
-                          // text field
-                          enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xfff86320)),
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                          ),
-                          // focused text field
-                          focusedBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            borderSide: BorderSide(
-                              color: Color(0xfff86320),
-                              width: 1,
-                            ),
-                          ),
+                      ),
 
-                          // error text field
-                          errorBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            borderSide: BorderSide(
-                              color: Color(0xffdf0808),
-                              width: 1,
-                            ),
-                          ),
-                          // error focused text filed
-                          focusedErrorBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            borderSide: BorderSide(
-                              color: Color(0xfff86320),
-                              width: 1,
-                            ),
-                          ),
-                        ),
+                      const SizedBox(height: 20),
+
+                      // confirm password textfield
+                      MyTextfield(
+                        hintText: "Confirm passsword",
+                        obscureText: false,
+                        controller: _confirmPassController,
+                        keyboardType: TextInputType.number,
+                        validator: (conPass) {
+                          if (conPass == null || conPass.isEmpty) {
+                            return "please confirm password";
+                          } else if (_passwordController.toString() !=
+                              conPass) {
+                            return "Password does not match";
+                          }
+                          return null;
+                        },
                       ),
                       const SizedBox(height: 30),
 
@@ -232,8 +152,10 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           onPressed: () {
                             if (_registerKey.currentState!.validate()) {
+                              _usernameController.clear();
                               _emailController.clear();
                               _passwordController.clear();
+                              _confirmPassController.clear();
 
                               Navigator.pushReplacement(
                                 context,
@@ -279,7 +201,11 @@ class _RegisterPageState extends State<RegisterPage> {
                                 padding: EdgeInsets.all(0),
                               ),
                               onPressed: () {
-                                Navigator.pop(context, (route) => LoginPage());
+                                Navigator.pop(
+                                    context,
+                                    (route) => LoginPage(
+                                          onTap: null,
+                                        ));
                               },
                               child: Text(
                                 'Login',
