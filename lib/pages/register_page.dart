@@ -67,6 +67,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                       // username textfield
                       MyTextfield(
+                        prefixIcon: Icon(Icons.person),
                         hintText: "User name",
                         obscureText: false,
                         controller: _usernameController,
@@ -86,6 +87,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                       // email textfield
                       MyTextfield(
+                        prefixIcon: Icon(Icons.email),
                         hintText: "Email",
                         obscureText: false,
                         controller: _emailController,
@@ -107,6 +109,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                       // password textField
                       MyTextfield(
+                        prefixIcon: Icon(Icons.password),
                         hintText: "Password",
                         obscureText: true,
                         controller: _passwordController,
@@ -125,6 +128,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                       // confirm password textfield
                       MyTextfield(
+                        prefixIcon: Icon(Icons.password),
                         hintText: "Confirm passsword",
                         obscureText: false,
                         controller: _confirmPassController,
@@ -219,18 +223,6 @@ class _RegisterPageState extends State<RegisterPage> {
                           ]),
 
                       SizedBox(height: 30), //gap between contents
-
-                      // ElevatedButton(
-                      //   onPressed: () {
-                      //     // Navigator.pop(context, (route) => LoginPage());
-                      //   },
-                      //   style: ElevatedButton.styleFrom(
-                      //       iconColor: Color(0xfff86320),
-                      //       backgroundColor: Color(0xffffffff),
-                      //       elevation: 15,
-                      //       shadowColor: Color(0xfff86320)),
-                      //   child: Icon(Icons.arrow_back_ios_new),
-                      // )
                     ]),
               ),
             ),

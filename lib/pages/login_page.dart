@@ -70,6 +70,9 @@ class _LoginPageState extends State<LoginPage> {
 
                     // login textfield
                     MyTextfield(
+                      prefixIcon: Icon(
+                        Icons.email,
+                      ),
                       hintText: 'Email',
                       keyboardType: TextInputType.emailAddress,
                       obscureText: false,
@@ -91,6 +94,7 @@ class _LoginPageState extends State<LoginPage> {
 
                     // password textfield
                     MyTextfield(
+                      prefixIcon: Icon(Icons.password),
                       hintText: "Password",
                       obscureText: true,
                       controller: _emailController,
@@ -104,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                         return null;
                       },
                     ),
-                    
+
                     const SizedBox(height: 40),
 
                     // login button
