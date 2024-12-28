@@ -1,4 +1,6 @@
 {
     "debug.console.closeOnEnd": false,
-    "accessibility.debugWatchVariableAnnouncements": false
+    "accessibility.debugWatchVariableAnnouncements": false,
+    "java.jdt.ls.java.home": "C:\\Program Files\\Java\\jdk-23"
+
 }

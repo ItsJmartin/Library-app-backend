@@ -21,46 +21,45 @@ class MyTextfield extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.1),
-      child: TextFormField(
-          keyboardType: keyboardType,
-          obscureText: obscureText,
-          controller: controller,
-          validator: validator,
-          style: GoogleFonts.dmSans(color: Colors.grey),
-          decoration: InputDecoration(
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(
-                color: Color(0xfff86320),
-              ),
+    return TextFormField(
+        keyboardType: keyboardType,
+        obscureText: obscureText,
+        controller: controller,
+        validator: validator,
+        style: GoogleFonts.dmSans(color: Colors.black),
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: Color.fromARGB(255, 225, 225, 211),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              color: Color(0xffffffff),
             ),
-            focusedBorder: OutlineInputBorder(
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              color: Color(0xffffffff),
+              width: 2,
+            ),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              color: Colors.red.shade700,
+              width: 1.5,
+            ),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
                 color: Color(0xfff86320),
                 width: 1.5,
-              ),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(
-                color: Colors.red.shade700,
-                width: 1.5,
-              ),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
-                  color: Color(0xfff86320),
-                  width: 1.5,
-                )),
-            prefixIcon: prefixIcon,
-            prefixIconColor: Color(0xfff86320),
-            hintText: hintText,
-            hintStyle: GoogleFonts.dmSans(color: Colors.grey),
-          )),
-    );
+              )),
+          prefixIcon: prefixIcon,
+          prefixIconColor: Color(0xfff86320),
+          hintText: hintText,
+          hintStyle: GoogleFonts.dmSans(color: Colors.grey),
+        ));
   }
 }

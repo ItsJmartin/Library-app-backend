@@ -17,10 +17,9 @@ class MyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         height: 60,
-        padding: EdgeInsets.symmetric(horizontal:16.1),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(
