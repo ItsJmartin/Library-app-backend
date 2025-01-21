@@ -16,7 +16,7 @@ class ContactsList extends StatelessWidget {
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Text(
               "HALODECK",
-              style: GoogleFonts.nunito(
+              style: GoogleFonts.baskervville(
                 color: const Color(0xfff86320),
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
@@ -27,7 +27,9 @@ class ContactsList extends StatelessWidget {
           const SizedBox(height: 20),
 
           // custom navigation bar
-          const Expanded(child: CustomNavBar()),
+          const Expanded(
+            child: CustomNavBar(),
+          ),
         ]),
       ),
     ));

@@ -2,30 +2,31 @@ import 'package:chat_app/components/my_button.dart';
 import 'package:chat_app/components/mytextfield.dart';
 import 'package:chat_app/pages/login_page.dart';
 import 'package:chat_app/pages/contacts_page.dart';
+import 'package:chat_app/services/auth/auth_services.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({
-    required this.onTap,
-    super.key,
-  });
+class RegisterPage extends StatelessWidget {
+  RegisterPage({super.key, required this.onTap});
 
-  @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  // register method
+  void register() {
+    // get auth service
+    final auth = AuthServices();
 
-  // tap to go to register page
-  final void Function()? onTap;
-}
+    if (_passwordController.text == _confirmPassController.text) {
+      auth.signInWithEmailPPassword(
+      _emailController.text,
+      _passwordController.text,
+    );
+    }
+  }
 
-class _RegisterPageState extends State<RegisterPage> {
   final _registerKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPassController = TextEditingController();
-
-  bool isCheked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,6 @@ class _RegisterPageState extends State<RegisterPage> {
           child: Padding(
             padding: EdgeInsets.all(16.1),
             child: SizedBox(
-             
               child: Form(
                 key: _registerKey,
                 child: SingleChildScrollView(
@@ -53,7 +53,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             color: Color(0xfff86320),
                           ),
                         ),
-                            
+
                         const SizedBox(height: 20), //gap between contents
                         // heading
                         Text(
@@ -64,9 +64,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                            
+
                         SizedBox(height: 40), // gap between contents
-                            
+
                         // username textfield
                         MyTextfield(
                           prefixIcon: Icon(Icons.person),
@@ -84,9 +84,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             return null;
                           },
                         ),
-                            
+
                         const SizedBox(height: 20), //gap between contents
-                            
+
                         // email textfield
                         MyTextfield(
                           prefixIcon: Icon(Icons.email),
@@ -106,9 +106,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             return null;
                           },
                         ),
-                            
+
                         const SizedBox(height: 20),
-                            
+
                         // password textField
                         MyTextfield(
                           prefixIcon: Icon(Icons.lock),
@@ -125,9 +125,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             return null;
                           },
                         ),
-                            
+
                         const SizedBox(height: 20),
-                            
+
                         // confirm password textfield
                         MyTextfield(
                           prefixIcon: Icon(Icons.password),
@@ -146,7 +146,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           },
                         ),
                         const SizedBox(height: 30),
-                            
+
                         SizedBox(
                           width: double.infinity,
                           height: 60,
@@ -158,14 +158,14 @@ class _RegisterPageState extends State<RegisterPage> {
                                 _emailController.clear();
                                 _passwordController.clear();
                                 _confirmPassController.clear();
-                            
+
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => const ContactsList(),
                                   ),
                                 );
-                            
+
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                     content: Text('Login Successful'),
@@ -175,12 +175,11 @@ class _RegisterPageState extends State<RegisterPage> {
                                 );
                               }
                             },
-                            
                           ),
                         ),
-                            
+
                         SizedBox(height: 10), // gap betwwen contents
-                            
+
                         Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
@@ -212,7 +211,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 ),
                               ),
                             ]),
-                            
+
                         SizedBox(height: 30), //gap between contents
                       ]),
                 ),
@@ -223,4 +222,7 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
+
+  // tap to go to register page
+  final void Function()? onTap;
 }

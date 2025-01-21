@@ -2,32 +2,38 @@ import 'package:chat_app/components/my_button.dart';
 import 'package:chat_app/components/mytextfield.dart';
 import 'package:chat_app/pages/register_page.dart';
 import 'package:chat_app/pages/contacts_page.dart';
+import 'package:chat_app/services/auth/auth_services.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatelessWidget {
   // tap to go to register page
   final void Function()? onTap;
 
-  const LoginPage({
-    required this.onTap,
-    super.key,
-  });
+  LoginPage({super.key, required this.onTap});
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   final _loginKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
+  // login method
+  void login(BuildContext context) async {
+    // auth service
+    final authService = AuthServices();
+    // try login
+    try {
+      await authService.signInWithEmailPPassword(
+          _emailController.text, _passwordController.text);
+    }
+    // catch any errors
+    catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(e.toString()),
+        ),
+      );
+    }
   }
 
   @override
@@ -55,9 +61,9 @@ class _LoginPageState extends State<LoginPage> {
                             color: Color(0xfff86320),
                           ),
                         ),
-                              
+
                         const SizedBox(height: 20),
-                              
+
                         // heading
                         Text(
                           "Login",
@@ -67,9 +73,9 @@ class _LoginPageState extends State<LoginPage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                              
+
                         SizedBox(height: 40),
-                              
+
                         // login textfield
                         MyTextfield(
                           prefixIcon: Icon(
@@ -91,9 +97,9 @@ class _LoginPageState extends State<LoginPage> {
                             return null;
                           },
                         ),
-                              
+
                         const SizedBox(height: 20),
-                              
+
                         // password textfield
                         MyTextfield(
                           prefixIcon: Icon(Icons.lock),
@@ -110,13 +116,16 @@ class _LoginPageState extends State<LoginPage> {
                             return null;
                           },
                         ),
-                              
+
                         const SizedBox(height: 40),
-                              
+
                         // login button
                         MyButton(
                           text: "Login",
                           onPressed: () {
+                            // login method
+                            login(context);
+
                             if (_loginKey.currentState!.validate()) {
                               _emailController.clear();
                               _passwordController.clear();
@@ -126,7 +135,7 @@ class _LoginPageState extends State<LoginPage> {
                                   builder: (context) => const ContactsList(),
                                 ),
                               );
-                              
+
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text('Login Successful'),

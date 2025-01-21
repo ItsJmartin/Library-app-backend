@@ -7,7 +7,7 @@ class MyTextfield extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
-  final Widget prefixIcon;
+  final Widget? prefixIcon;
 
   const MyTextfield({
     super.key,

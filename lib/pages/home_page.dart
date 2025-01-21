@@ -30,9 +30,9 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-        
+
               SizedBox(height: 30),
-        
+
               Center(
                 child: Container(
                   height: 200,
@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Color(0xfff86320).withOpacity(0.2),
+                        color: Color(0xfff86320).withValues(alpha: 0.2),
                         blurRadius: 50,
                         offset: Offset(0, 30),
                       ),
@@ -53,9 +53,9 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-        
+
               SizedBox(height: 100),
-        
+
               Text(
                 "Welcome to Halodec",
                 textAlign: TextAlign.center,
@@ -66,9 +66,9 @@ class HomePage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-        
+
               SizedBox(height: 20),
-        
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text(
@@ -81,16 +81,16 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-        
+
               SizedBox(height: 30),
-        
+
               // Let's Get Started button with shadow
               Container(
                 width: double.infinity,
                 height: 70,
                 decoration: BoxDecoration(boxShadow: [
                   BoxShadow(
-                    color: Color(0xfff86320).withOpacity(0.2),
+                    color: Color(0xfff86320).withValues(alpha: 0.2),
                     blurRadius: 50,
                     offset: Offset(0, 10),
                   ),
@@ -105,7 +105,8 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => LoginOrRegister()),
+                      MaterialPageRoute(
+                          builder: (context) => LoginOrRegister()),
                     );
                   },
                   child: Text(
@@ -118,7 +119,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-        
+
               // Already have an account? Login
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

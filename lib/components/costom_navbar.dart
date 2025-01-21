@@ -17,7 +17,7 @@ class CustomNavBar extends StatelessWidget {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.all(5), // tab bar outside padding
+            padding: EdgeInsets.all(3), // tab bar outside padding
             child: TabBar(
               indicator: BoxDecoration(
                 color: Color(0xfff86320),
@@ -41,8 +41,8 @@ class CustomNavBar extends StatelessWidget {
         Flexible(
           child: TabBarView(
             children: [
-              Center(child: Text('Status Page')),
-              Center(child: Text('Chat Page')),
+              Center(child: Text('Chat page')),
+              Center(child: Text('Status page')),
               Center(child: Text('Calls Page')),
             ],
           ),

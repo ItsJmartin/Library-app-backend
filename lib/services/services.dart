@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:chat_app/models/contact_model.dart';
+import 'package:http/http.dart' as http;
 
 class ContactService {
   String apiUrl = "https://crudcrud.com/api/2d0856c9108a4a09ba4688f0a1aaf8c2";
